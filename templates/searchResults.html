@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'searchResultStyle.css')}}">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <title>Search Results</title>
+</head>
+<body>      
+        <form action="{{url_for('checkprofane')}}" id="main" method="POST">
+        <div class='top1'>
+            <div class="input-block">
+                <i class="fa fa-search"></i>
+                <input type="text" name="searchkey" id="search-box"  value  ="{{sentence}}""> 
+                <input type="submit" name="Search" id="Search" value="Search"> 
+            </div>
+            <!--dropdown added here-->
+            <a class='topright' href = "{{ url_for('index')}}">Home</a> 
+            {%if username1%}
+            <div class="dropdown">
+                <button class="dropbtn">{{username1}}    
+                <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href="{{ url_for('history')}}">History</a>
+                  <a href="{{ url_for('signout')}}">Sign Out</a>
+                </div>
+            </div> 
+            {%else%}
+
+        <a class ='topright' href = "{{ url_for('loginpage')}}">Login</a>
+        <a class ='topright' href = "{{ url_for('regpage')}}">Register</a>
+        {%endif%}
+    </div>
+        {%if not data%}
+    <div class = 'container'>
+        <div class="resultFull">
+            <div class="results">
+                <p style="font-size:19px;padding-top: 20px; margin-bottom: 20px; color:#6c6e70 "><b> Search results:</b></p>
+                <!--start result from here
+                
+                <div class = 'link'>https://www.stackoverflow.com>....</div>
+                <div class = 'languages'><u>Lorem Ipsum dolor sit amet </u></div>    
+                    <div class = 'description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat vestibulum nunc vulputate congue. 
+                Nullam accumsan lacus nunc, in semper lorem lacinia vel. Aliquam erat volutpat.
+                Nulla lobortis laoreet erat ut dictum. Proin et pretium risus. Integer porttitor, massa sed scelerisque tristique, eros urna sollicitudin quam, et lacinia enim massa in nibh.
+                Fusce ut sodales turpis auctor. Sed volutpat velit ut nisl maximus vehicula. </div>
+                <br>
+                -->
+
+                {% for l,hd in results.items() %}
+                <div class='link'><b>{{l}}</b> </div>
+                <a href = "{{l}}">
+                    <b>
+                    <div class = 'languages' ><u>{{hd[0]}}</u></div>
+                    </b>
+                </a>
+                    <div class = 'description'>{{hd[1]}}</div>
+                    <br><br>
+                    {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    </form>
+    {%else%}
+    
+        <div class="background-image">
+            <div class="simply"></div>
+        </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <h1 class='content'>Inappropriate NSFW content has been found and the results have been blocked.</h1>
+        <br><br><br><a class = 'content' style="font-size: 24px;"  href='/'>Go back to home page</a>
+    </form>
+    {%endif%}
+</body>
+</html>
+

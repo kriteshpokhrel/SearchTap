@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'historyStyle.css')}}">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <title>History</title>
+</head>
+<body>      
+        <form action="{{url_for('checkprofane')}}" id="main" method="POST">
+        <div class='top1'>
+            <div class="input-block">
+                <i class="fa fa-search"></i>
+                <input type="text" name="searchkey" id="search-box"  value  ="{{sentence}}""> 
+                <input type="submit" name="Search" id="Search" value="Search"> 
+            </div>
+            <!--dropdown added here-->
+            <a class='topright' href = "{{ url_for('index')}}">Home</a> 
+            {%if username1%}
+            <div class="dropdown">
+                <button class="dropbtn">{{username1}}    
+                <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href="{{ url_for('history')}}">History</a>
+                  <a href="{{ url_for('signout')}}">Sign Out</a>
+                </div>
+            </div> 
+            {%else%}
+        
+
+        <a class ='topright' href = "{{ url_for('loginpage')}}">Login</a>
+        <a class ='topright' href = "{{ url_for('regpage')}}">Register</a>
+        {%endif%}
+    </div>
+    {%if results%}
+    <div class = 'container'>
+        <div class="resultFull">
+            <div class="results">
+                <div class = 'historyheader'>History:</div>
+                {% for searchtime,key in results.items() %}
+                <div class = 'time'>{{searchtime}}</div>    
+                    <div class = 'key' ><u><b>{{key}}</b></u></div>                  
+                    <br><br>
+                    {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {%endif%}
+    </form>

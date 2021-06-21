@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'registrationStyle.css')}}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Registration | SearchTap</title>
+   </head>
+<body>
+  <nav>
+    <!--dropdown added here-->
+  <a class ='topright' href = "{{ url_for('index')}}">Home</a>
+  </nav>
+  <new1>
+  <script type="text/javascript">
+    var check = function() {
+      p1 = document.getElementById('pwd1').value;
+      p2 = document.getElementById('pwd2').value;
+  if (p1 == p2)
+    {
+    document.getElementById('message1').style.color = 'green';
+    document.getElementById('message1').innerHTML = 'Passwords match.';
+  } else {
+    document.getElementById('message1').style.color = 'red';
+    document.getElementById('message1').innerHTML = 'Passwords do not match.';
+  }
+  if (p2.length<8){
+    document.getElementById('message2').style.color = 'red';
+    document.getElementById('message2').innerHTML = 'Password too weak';
+  }else{
+  
+    document.getElementById('message2').style.color = 'green';
+    document.getElementById('message2').innerHTML = 'Password strong.';
+  }
+}
+    
+</script>
+
+  <div class="container">
+    <div class="title">Registration&nbsp;|&nbsp;<span class = "searchtap">SearchTap</span> </div>
+    <div class="content">
+
+      <form action="{{url_for('register')}}" id = 'register' method = "POST">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">First Name</span>
+            <input type="text" name="fname" placeholder="Enter your first name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Last Name</span>
+            <input type="text" name="lname" placeholder="Enter your last name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" name = "email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" name= "number" placeholder="Enter your number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" id="pwd1" name="password1" placeholder="Enter your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" id="pwd2" name="password2" placeholder="Confirm your password"  onkeyup='check();' required>
+          </div>
+        </div>
+        <div>
+          <span id='message1'></span> <br>
+          <span id='message2'></span>
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1" value = "Male">
+          <input type="radio" name="gender" id="dot-2" value = "Female">
+          <input type="radio" name="gender" id="dot-3" value = "NaN">
+          <span class="gender-title">Gender</span>
+          <div class="category" required>
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Female</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Prefer not to say</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" name="register" value="Register" >
+        </div>
+      </form>
+    </div>
+  </div>
+</new1>
+</body>
+</html>

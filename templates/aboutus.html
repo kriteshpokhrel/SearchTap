@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'aboutStyle.css')}}">
+</head>
+<body>
+    <nav>
+        <!--dropdown added here-->
+    <a class ='topright' href = "{{ url_for('index')}}">Home</a>
+    </nav>
+
+    <div class="container">
+    <div class="about-section">
+        <div class="inner-container">
+            <h1>About Us</h1>
+            <p class="text">
+               SearchTap is a search engine designed to demonstrate the basics of web scrapping. It provides safe search feature where every search is checked using strict keyword filtering making users specially kids safe from explicit materials.  </p>
+            <div class="skills"><br>
+                <span>For any queries or suggestions:</span><br>
+            </div>
+                <p class="text">Email: kriteshpokharel100@gmail.com<br>Phone no: (+91)-7624838470, (+977)-9866068872</p>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

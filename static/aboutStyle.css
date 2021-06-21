@@ -1,0 +1,115 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway',sans-serif;
+}
+body{
+    background: linear-gradient(360deg,#0F2027,#203A43, #2C5364);
+    color: black;
+    overflow-x: hidden;
+    font-size: 13px;
+    font-weight: lighter;
+    height: 100vh;
+}
+
+nav{
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.3); 
+    align-items: center;
+  }
+  .topright{
+    text-decoration: none;
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color:transparent;
+    font-family: inherit;
+    margin-right: 0px;
+    overflow: hidden;
+    width: auto;
+  }
+
+  body .container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 2px 5px;
+    border-radius: 15;
+    border-collapse: separate;
+    overflow: hidden;
+    margin: 100px;
+    height: 65%;
+    margin-bottom: 100px;
+    border-radius: 25px;
+  }
+
+
+.about-section{
+    background: url('/static/images/aboutbg.jpg') no-repeat left;
+    background-size: 55%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    padding: 100px 0;
+    border-radius: 25px;
+    margin: 3px;
+}
+
+.inner-container{
+    width: 55%;
+    float: right;
+    background-color: #fdfdfd;
+    padding: 40px;
+    border-radius: 20px;
+    height: 40vh;
+}
+
+.inner-container h1{
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.text{
+    font-size: 15px;
+    color: #545454;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 0px;
+}
+
+.skills{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+@media screen and (max-width:1200px){
+    .inner-container{
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .about-section{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .about-section{
+        padding: 0;
+    }
+    .inner-container{
+        padding: 60px;
+    }
+}
